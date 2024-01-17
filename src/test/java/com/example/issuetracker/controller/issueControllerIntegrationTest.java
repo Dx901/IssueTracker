@@ -78,7 +78,6 @@ public class issueControllerIntegrationTest {
         issue.setDescription("Test Description");
         issue.setPriority(priority);
         issue.setAssignee("Test Assignee");  // Set a valid assignee value
-        // Set other fields as needed
         return issue;
     }
 
