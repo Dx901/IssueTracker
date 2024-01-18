@@ -1,4 +1,4 @@
-package com.example.issuetracker.service;
+package com.example.issuetracker.controller;
 
 import com.example.issuetracker.controller.IssueController;
 import com.example.issuetracker.models.Issue;
