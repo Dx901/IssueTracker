@@ -6,7 +6,6 @@ import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
-import org.springframework.http.HttpStatus;
 
 @Entity
 public class Issue {
@@ -24,9 +23,6 @@ public class Issue {
     @NotNull
     @Enumerated(EnumType.STRING)
     private Priority priority;
-
-    @Column(name = "assignee") // Adding column name for clarity
-    private String assignee;
 
     // Default constructor for JPA
     public Issue() {
@@ -66,12 +62,5 @@ public class Issue {
         this.priority = priority;
     }
 
-    public String getAssignee() {
-        return assignee;
-    }
-
-    public void setAssignee(String assignee) {
-        this.assignee = assignee;
-    }
 }
 

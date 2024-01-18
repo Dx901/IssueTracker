@@ -3,6 +3,7 @@ package com.example.issuetracker.controller;
 import com.example.issuetracker.models.Issue;
 import com.example.issuetracker.services.IssueService;
 import jakarta.validation.Valid;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -10,13 +11,13 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequestMapping(value = "/api/issues", produces = "application/json")
 public class IssueController {
-//    @Autowired
-    public IssueService issueService;
+    private final IssueService issueService;
 
-//    @PostMapping
-//    public Issue createIssue(@RequestBody Issue issue) {
-//        return issueService.createIssue(issue);
-//    }
+    @Autowired
+    public IssueController(IssueService issueService) {
+        this.issueService = issueService;
+    }
+
 
 
     @PostMapping
@@ -27,7 +28,7 @@ public class IssueController {
         } catch (IllegalArgumentException e) {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
         } catch (Exception e) {
-            return ResponseEntity.status(getStatusCodeForException(e)).body("Error creating issue: " + e.getMessage());
+            return ResponseEntity.status(getStatusCodeForException()).body("Error creating issue: " + e.getMessage());
         }
     }
 
@@ -39,7 +40,7 @@ public class IssueController {
         } catch (IllegalArgumentException e) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(e.getMessage());
         } catch (Exception e) {
-            return ResponseEntity.status(getStatusCodeForException(e)).body("Error updating issue: " + e.getMessage());
+            return ResponseEntity.status(getStatusCodeForException()).body("Error updating issue: " + e.getMessage());
         }
     }
 
@@ -69,11 +70,11 @@ public class IssueController {
         } catch (IllegalArgumentException e) {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
         } catch (Exception e) {
-            return ResponseEntity.status(getStatusCodeForException(e)).body("Error deleting issue: " + e.getMessage());
+            return ResponseEntity.status(getStatusCodeForException()).body("Error deleting issue: " + e.getMessage());
         }
     }
 
-    private int getStatusCodeForException(Exception e) {
+    private int getStatusCodeForException() {
         return HttpStatus.INTERNAL_SERVER_ERROR.value();
     }
 

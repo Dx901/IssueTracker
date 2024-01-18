@@ -8,8 +8,13 @@ import org.springframework.stereotype.Service;
 @Service
 public class IssueServiceImplementation implements IssueService{
 
+
+    private final IssueRepository issueRepository;
+
     @Autowired
-    public IssueRepository issueRepository;
+    public IssueServiceImplementation(IssueRepository issueRepository) {
+        this.issueRepository = issueRepository;
+    }
 
     @Override
     public Issue createIssue(Issue issue) {
