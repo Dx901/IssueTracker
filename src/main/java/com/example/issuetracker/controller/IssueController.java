@@ -11,13 +11,14 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequestMapping(value = "/api/issues", produces = "application/json")
 public class IssueController {
-    private final IssueService issueService;
+
+    public IssueService issueService;
+
 
     @Autowired
     public IssueController(IssueService issueService) {
         this.issueService = issueService;
     }
-
 
     @PostMapping
     public ResponseEntity<?> createIssue(@Valid @RequestBody Issue issue) {
