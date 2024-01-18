@@ -19,7 +19,6 @@ public class IssueController {
     }
 
 
-
     @PostMapping
     public ResponseEntity<?> createIssue(@Valid @RequestBody Issue issue) {
         try {
