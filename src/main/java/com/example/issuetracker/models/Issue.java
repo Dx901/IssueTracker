@@ -25,7 +25,14 @@ public class Issue {
     @Enumerated(EnumType.STRING)
     private Priority priority;
 
-    public String assignee;
+    @Column(name = "assignee") // Adding column name for clarity
+    private String assignee;
+
+    // Default constructor for JPA
+    public Issue() {
+    }
+
+    // Getters and setters
 
     public Long getId() {
         return id;
@@ -59,7 +66,12 @@ public class Issue {
         this.priority = priority;
     }
 
+    public String getAssignee() {
+        return assignee;
+    }
+
     public void setAssignee(String assignee) {
         this.assignee = assignee;
     }
 }
+
