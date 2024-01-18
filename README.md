@@ -117,3 +117,52 @@ Areas for Further Attention
 Authorization Checks:
 Explicit authorization checks for issue modification are not implemented explicitly in the provided code. There will be additional logic to ensure that only authorized users can modify issue details.
 
+HOW TO TEST THE ENDPOINTS
+
+
+1. POST = CREATE A NEW ISSUE
+Set the request type to POST.
+Enter the URL: http://localhost:8080/api/issues.
+
+{
+"title": "New Issue",
+"description": "Description of the new issue",
+"priority": "HIGH",
+"assignee": "John Doe"
+}
+
+
+2.PUT = Update an Issue:
+
+Set the request type to PUT.
+Enter the URL: http://localhost:8080/api/issues/{issueId}, replacing {issueId} with the actual ID of an existing issue.
+
+{
+"title": "Updated Issue",
+"description": "Updated description of the issue",
+"priority": "MEDIUM",
+"assignee": "Jane Doe"
+}
+
+
+3.GET = Retrieve a Specific Issue:
+
+Set the request type to GET.
+Enter the URL: http://localhost:8080/api/issues/{issueId}, replacing {issueId} with the actual ID of an existing issue.
+Click the Send button.
+Check the response for the specific issue.
+
+
+4.GET = Retrieve All Issues:
+
+Set the request type to GET.
+Enter the URL: http://localhost:8080/api/issues.
+Click the Send button.
+Check the response for all issues.
+
+5.DELETE = Delete an Issue:
+
+Set the request type to DELETE.
+Enter the URL: http://localhost:8080/api/issues/{issueId}, replacing {issueId} with the actual ID of an existing issue.
+Click the Send button.
+Check the response for the delete operation.

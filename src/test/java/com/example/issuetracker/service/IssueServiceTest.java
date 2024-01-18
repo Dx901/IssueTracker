@@ -105,4 +105,16 @@ public class IssueServiceTest {
         assertEquals("Test Issue", result.getTitle());
         assertEquals(Priority.MEDIUM, result.getPriority());
     }
+
+    /**
+     * Test case for updating an issue that does not exist.
+     */
+    @Test
+    public void testUpdateIssueNotFound() {
+        // Mocking the behavior of the repository findById method to return an empty optional
+        when(issueRepository.findById(1L)).thenReturn(java.util.Optional.empty());
+
+        // Performing the updateIssue operation and expecting an exception to be thrown
+        assertThrows(IllegalArgumentException.class, () -> issueService.updateIssue(1L, new Issue()));
+    }
 }
