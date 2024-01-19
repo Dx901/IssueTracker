@@ -1,24 +1,20 @@
 package com.example.issuetracker.controller;
 
-import com.example.issuetracker.controller.IssueController;
 import com.example.issuetracker.models.Issue;
 import com.example.issuetracker.services.IssueService;
 import org.junit.Before;
 import org.junit.Test;
-import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
-import org.mockito.junit.MockitoJUnitRunner;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-
 import static org.junit.Assert.assertEquals;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.eq;
 import static org.mockito.Mockito.when;
 
-@RunWith(MockitoJUnitRunner.class)
+//@RunWith(MockitoJUnitRunner.class)
 public class IssueControllerTest {
 
     @Mock
@@ -44,7 +40,7 @@ public class IssueControllerTest {
         when(issueService.createIssue(any(Issue.class))).thenReturn(issue);
 
         // Invoking the createIssue method of the controller
-        ResponseEntity<Issue> response = (ResponseEntity<Issue>) issueController.createIssue(issue);
+        ResponseEntity<?> response = issueController.createIssue(issue);
 
         // Asserting that the HTTP status code is OK and the returned issue matches the expected issue
         assertEquals(HttpStatus.OK, response.getStatusCode());
@@ -90,7 +86,7 @@ public class IssueControllerTest {
         when(issueService.getIssueById(eq(issueId))).thenReturn(issue);
 
         // Invoking the getIssueById method of the controller
-        ResponseEntity<Issue> response = (ResponseEntity<Issue>) issueController.getIssueById(issueId);
+        ResponseEntity<?> response = issueController.getIssueById(issueId);
 
         // Asserting that the HTTP status code is OK and the returned issue matches the expected issue
         assertEquals(HttpStatus.OK, response.getStatusCode());
